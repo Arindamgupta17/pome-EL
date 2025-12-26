@@ -7,7 +7,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load Model (Graceful fallback if file missing)
-MODEL_PATH = 'model.pkl'
+MODEL_PATH = 'attrition_xgb_model (1).pkl'
 model = None
 
 def load_model():
