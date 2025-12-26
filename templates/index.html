@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Employee Attrition Intelligence System</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>AI-Powered Employee Attrition Intelligence</h1>
+            <p class="subtitle">Predictive Analytics & Retention Decision Support</p>
+        </header>
+
+        <div class="main-grid">
+            <!-- Left Column: Input Panel -->
+            <div class="card input-panel">
+                <h2><span class="icon">⚙️</span> Employee Parameters</h2>
+                <form id="predictionForm">
+                    
+                    <div class="form-group">
+                        <label for="JobRole" title="Role of the employee">Job Role</label>
+                        <select id="JobRole" required>
+                            <option value="0">Business Analyst</option>
+                            <option value="1">Cloud Engineer</option>
+                            <option value="2">Data Analyst</option>
+                            <option value="3">Data Scientist</option>
+                            <option value="4">IT Support / SysAdmin</option>
+                            <option value="5">Machine Learning Engineer</option>
+                            <option value="6">Product Manager</option>
+                            <option value="7">Senior Software Engineer</option>
+                            <option value="8">Software Engineer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Department">Department</label>
+                        <select id="Department" required>
+                            <option value="0">Business Analysis</option>
+                            <option value="1">Cloud & Infrastructure</option>
+                            <option value="2">Customer Support</option>
+                            <option value="3">Data & AI</option>
+                            <option value="4">Engineering / Development</option>
+                            <option value="5">Human Resources</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Work Life Balance</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="WorkLifeBalance" value="1"> Poor</label>
+                            <label><input type="radio" name="WorkLifeBalance" value="2"> Fair</label>
+                            <label><input type="radio" name="WorkLifeBalance" value="3" checked> Good</label>
+                            <label><input type="radio" name="WorkLifeBalance" value="4"> Excellent</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Job Satisfaction</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="JobSatisfaction" value="1"> Poor</label>
+                            <label><input type="radio" name="JobSatisfaction" value="2"> Fair</label>
+                            <label><input type="radio" name="JobSatisfaction" value="3" checked> Good</label>
+                            <label><input type="radio" name="JobSatisfaction" value="4"> Excellent</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="StockOptionLevel">Stock Option Level</label>
+                        <select id="StockOptionLevel" required>
+                            <option value="0">None</option>
+                            <option value="1">Low</option>
+                            <option value="2">Medium</option>
+                            <option value="3">High</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-predict">Predict Attrition Risk</button>
+                    <button type="button" class="btn-reset" onclick="resetForm()">Reset Parameters</button>
+                </form>
+
+                <div class="research-toggle">
+                    <label>
+                        <input type="checkbox" id="researchModeToggle"> Research Mode
+                    </label>
+                </div>
+            </div>
+
+            <!-- Right Column: Results Dashboard -->
+            <div class="results-panel">
+                
+                <!-- Main Prediction Card -->
+                <div class="card prediction-card" id="resultCard" style="display:none;">
+                    <div class="risk-badge" id="riskBadge">Low Risk</div>
+                    
+                    <div class="prediction-header">
+                        <h2 id="predictionText">Likely to Stay</h2>
+                        <div class="probability">
+                            <span id="probValue">15%</span>
+                            <small>Probability</small>
+                        </div>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+
+                    <div class="insights-box">
+                        <h3>🤖 AI Insights</h3>
+                        <p id="featureSummary">Waiting for input...</p>
+                    </div>
+                </div>
+
+                <!-- Charts Area -->
+                <div class="charts-grid" id="chartsArea" style="display:none;">
+                    <div class="card chart-card">
+                        <h3>Feature Contribution</h3>
+                        <canvas id="contributionChart"></canvas>
+                    </div>
+                    <div class="card chart-card">
+                        <h3>Historical Context</h3>
+                        <canvas id="historyChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Action Plan -->
+                <div class="card action-card" id="actionCard" style="display:none;">
+                    <h3>📋 HR Action Plan</h3>
+                    <ul id="actionList">
+                        <!-- Recommendations go here -->
+                    </ul>
+                </div>
+
+                <!-- Research Mode Details -->
+                <div class="card research-card" id="researchDetails" style="display:none;">
+                    <h3>🔬 Research Details</h3>
+                    <p><strong>Model:</strong> Random Forest Classifier (v1.0)</p>
+                    <p><strong>Encoding:</strong> Label Encoding (JobRole, Department)</p>
+                    <p class="disclaimer"><strong>Ethical Disclaimer:</strong> This system is a decision-support tool, not a replacement for human judgment. All predictions should be verified by HR professionals.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>AI-Powered Employee Attrition Intelligence System &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
