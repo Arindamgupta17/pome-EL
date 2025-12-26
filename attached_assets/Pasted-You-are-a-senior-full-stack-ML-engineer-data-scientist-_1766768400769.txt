@@ -1,0 +1,187 @@
+You are a senior full-stack ML engineer, data scientist, and UI/UX designer.
+
+I already have a TRAINED employee attrition prediction model saved as a .pkl file.
+DO NOT retrain the model.
+ONLY load and use the existing trained model.
+
+Your task is to build a COMPLETE, END-TO-END, PROFESSIONAL web application
+(frontend + backend) that correctly feeds inputs to the model and displays
+predictions, explanations, and charts in a premium dashboard style.
+
+================================================
+BACKEND REQUIREMENTS (CRITICAL)
+================================================
+
+- Use Python + Flask
+- Load the trained model from a .pkl file using joblib or pickle
+- Validate that the model loads correctly on startup
+- Expose a POST endpoint `/predict`
+- Accept JSON input from frontend
+- Maintain EXACT FEATURE ORDER as used during training
+- Return JSON containing:
+  - attrition_prediction (0 or 1)
+  - attrition_probability (percentage)
+  - risk_level (Low / Medium / High)
+  - feature_summary (human-readable explanation)
+  - feature_contributions (approximate or mock SHAP-style values)
+
+================================================
+EXACT FEATURE ENCODINGS (DO NOT CHANGE)
+================================================
+
+1️⃣ JobRole (Label Encoded – alphabetical order):
+
+0 = Business Analyst  
+1 = Cloud Engineer  
+2 = Data Analyst  
+3 = Data Scientist  
+4 = IT Support / System Administrator  
+5 = Machine Learning Engineer  
+6 = Product Manager  
+7 = Senior Software Engineer  
+8 = Software Engineer  
+
+Frontend MUST show dropdown labels but send encoded integers.
+
+---
+
+2️⃣ Department (Label Encoded):
+
+0 = Business Analysis  
+1 = Cloud & Infrastructure  
+2 = Customer Support  
+3 = Data & AI  
+4 = Engineering / Development  
+5 = Human Resources  
+
+---
+
+3️⃣ WorkLifeBalance (Already Standard – Integer):
+
+1 = Poor  
+2 = Fair  
+3 = Good  
+4 = Excellent  
+
+---
+
+4️⃣ JobSatisfaction (Same Mapping as WorkLifeBalance):
+
+1 = Poor  
+2 = Fair  
+3 = Good  
+4 = Excellent  
+
+---
+
+5️⃣ StockOptionLevel:
+
+0 = None  
+1 = Low  
+2 = Medium  
+3 = High  
+
+---
+
+🎯 Target Variable:
+- Attrition
+  - 0 = Employee Stays
+  - 1 = Employee Leaves
+
+================================================
+FRONTEND REQUIREMENTS (DESIGN + UX)
+================================================
+
+- Use HTML, CSS, JavaScript (NO React)
+- Modern dashboard UI:
+  - Glassmorphism
+  - Smooth animations
+  - Professional academic look
+- Responsive layout
+- Use Chart.js for charts
+
+📌 Input Section:
+- Dropdowns for JobRole & Department
+- Sliders or radio buttons for WorkLifeBalance & JobSatisfaction
+- Dropdown for StockOptionLevel
+- Tooltips explaining each feature
+- Reset button
+
+📌 Results Section:
+- Risk badge:
+  - Green = Low
+  - Yellow = Medium
+  - Red = High
+- Attrition probability (%)
+- Animated progress bar or gauge
+- Binary prediction text:
+  - “Likely to Stay”
+  - “High Risk of Attrition”
+
+================================================
+CHARTS & VISUALIZATIONS
+================================================
+
+Include Chart.js visuals:
+1) Attrition Probability Bar / Gauge
+2) Feature Contribution Bar Chart
+3) Mock Historical Attrition Distribution Chart (for presentation)
+
+================================================
+INSIGHTS & EXPLANATIONS (VERY IMPORTANT)
+================================================
+
+Generate human-readable insights such as:
+- “Low job satisfaction significantly increases attrition risk”
+- “Lack of stock options contributes to disengagement”
+- “Work-life balance is a stabilizing factor”
+
+================================================
+HR ACTION PLAN SECTION
+================================================
+
+Auto-generate recommendations based on risk level:
+
+Low Risk:
+- Maintain engagement
+- Recognition programs
+
+Medium Risk:
+- Career discussion
+- Compensation review
+
+High Risk:
+- Retention bonus
+- Role redesign
+- Work-life balance intervention
+
+================================================
+BONUS (FOR PROFESSORS & PAPER)
+================================================
+
+Add a “Research Mode” toggle that shows:
+- Model type
+- Input features
+- Encoding strategy
+- Ethical disclaimer:
+  “This system is a decision-support tool, not a replacement for human judgment.”
+
+Footer text:
+“AI-Powered Employee Attrition Intelligence System”
+
+================================================
+FINAL OUTPUT
+================================================
+
+Deliver:
+- Fully working Flask app
+- Correct predictions using the trained model
+- Accurate encoding & feature order
+- Premium dashboard UI
+- Charts, insights, and recommendations
+- Ready for:
+  - Professor demo
+  - Research paper screenshots
+  - GitHub publication
+
+Start by building the backend first, then the frontend, then connect both.
